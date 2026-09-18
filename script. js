@@ -1,334 +1,271 @@
-const yesButton = document.getElementById("yesButton");
-const noButton = document.getElementById("noButton");
+document.addEventListener("DOMContentLoaded", function () {
 
-const questionScreen =
-  document.getElementById("questionScreen");
+  const yesButton = document.getElementById("yesButton");
+  const noButton = document.getElementById("noButton");
 
-const loveScreen =
-  document.getElementById("loveScreen");
+  const questionScreen =
+    document.getElementById("questionScreen");
 
-const questionMessage =
-  document.getElementById("questionMessage");
+  const loveScreen =
+    document.getElementById("loveScreen");
 
-const bouquet =
-  document.getElementById("bouquet");
+  const questionMessage =
+    document.getElementById("questionMessage");
 
-const animationText =
-  document.getElementById("animationText");
+  const bouquet =
+    document.getElementById("bouquet");
 
-const finalMessage =
-  document.getElementById("finalMessage");
+  const animationText =
+    document.getElementById("animationText");
 
-const replayButton =
-  document.getElementById("replayButton");
+  const finalMessage =
+    document.getElementById("finalMessage");
 
-const confetti =
-  document.getElementById("confetti");
+  const replayButton =
+    document.getElementById("replayButton");
 
-
-/* ==========================================
-   NO BUTTON MESSAGES
-========================================== */
-
-const noMessages = [
-  "No 🥺",
-  "Are you sure? 🥺",
-  "Please think about it... 💜",
-  "Really? 😭",
-  "Are you absolutely sure? 🥹",
-  "Dudu is getting sad... 💔",
-  "One more chance? 🌸",
-  "Think again, please? 🥺",
-  "Don't break Dudu's heart 😭",
-  "Pretty please? 💜",
-  "Last chance? 🥹",
-  "Please say yes... 💐"
-];
-
-let noCount = 0;
+  const confetti =
+    document.getElementById("confetti");
 
 
-/* ==========================================
-   NO BUTTON CLICK
-========================================== */
+  /* ================================
+     CHECK ELEMENTS
+  ================================= */
 
-noButton.addEventListener("click", () => {
-
-  noCount++;
-
-  const messageIndex =
-    Math.min(
-      noCount,
-      noMessages.length - 1
-    );
-
-  noButton.textContent =
-    noMessages[messageIndex];
-
-  questionMessage.textContent =
-    noMessages[messageIndex];
-
-  moveNoButton();
-
-});
+  if (
+    !yesButton ||
+    !noButton ||
+    !questionScreen ||
+    !loveScreen
+  ) {
+    console.error("Valentine website elements not found.");
+    return;
+  }
 
 
-/* ==========================================
-   PLAYFUL NO BUTTON MOVEMENT
-========================================== */
+  /* ================================
+     NO BUTTON
+  ================================= */
 
-function moveNoButton() {
+  const messages = [
+    "No 🥺",
+    "Are you sure? 🥺",
+    "Please think about it... 💜",
+    "Really? 😭",
+    "Are you absolutely sure? 🥹",
+    "Dudu is getting sad... 💔",
+    "One more chance? 🌸",
+    "Think again, please? 🥺",
+    "Don't break Dudu's heart 😭",
+    "Pretty please? 💜",
+    "Last chance? 🥹",
+    "Please say yes... 💐"
+  ];
 
-  const isMobile =
-    window.innerWidth <= 600;
+  let noCount = 0;
 
 
-  /*
-    On phones we only move the button
-    a little so it stays easy to tap.
-  */
+  noButton.addEventListener("click", function () {
 
-  if (isMobile) {
+    noCount++;
+
+    const index =
+      Math.min(
+        noCount,
+        messages.length - 1
+      );
+
+    noButton.textContent =
+      messages[index];
+
+    questionMessage.textContent =
+      messages[index];
+
+
+    /* Move button */
 
     const x =
       Math.random() * 70 - 35;
 
     const y =
-      Math.random() * 50 - 25;
+      Math.random() * 45 - 22;
 
     noButton.style.transform =
-      `translate(${x}px, ${y}px)`;
+      "translate(" + x + "px, " + y + "px)";
 
-    return;
-  }
-
-
-  /*
-    Desktop movement.
-  */
-
-  const x =
-    Math.random() * 100 - 50;
-
-  const y =
-    Math.random() * 60 - 30;
-
-  noButton.style.transform =
-    `translate(${x}px, ${y}px)`;
-}
+  });
 
 
-/* ==========================================
-   YES BUTTON
-========================================== */
+  /* ================================
+     YES BUTTON
+  ================================= */
 
-yesButton.addEventListener("click", () => {
+  yesButton.addEventListener("click", function () {
 
-  /*
-    Hide the question.
-  */
+    console.log("YES button clicked");
 
-  questionScreen.classList.add("hidden");
+    questionScreen.classList.add("hidden");
 
-
-  /*
-    Show the animation screen.
-  */
-
-  loveScreen.classList.remove("hidden");
+    loveScreen.classList.remove("hidden");
 
 
-  /*
-    Reset animation.
-  */
+    /* Reset animation */
 
-  bouquet.classList.remove("give");
+    bouquet.classList.remove("give");
 
-  finalMessage.classList.add("hidden");
+    finalMessage.classList.add("hidden");
 
-  animationText.classList.remove("hidden");
-
-
-  animationText.textContent =
-    "Dudu has something for Bubu... 🥺";
-
-
-  /*
-    Force browser to recognize a fresh animation.
-  */
-
-  void bouquet.offsetWidth;
-
-
-  /*
-    Start bouquet animation after
-    a short dramatic pause.
-  */
-
-  setTimeout(() => {
+    animationText.classList.remove("hidden");
 
     animationText.textContent =
-      "Dudu is giving Bubu a bouquet... 💐";
-
-    bouquet.classList.add("give");
-
-  }, 1200);
+      "Dudu has something for Bubu... 🥺";
 
 
-  /*
-    Bouquet reaches Bubu.
-  */
+    /*
+      Force browser to restart
+      the bouquet animation.
+    */
 
-  setTimeout(() => {
-
-    animationText.textContent =
-      "Bubu got the flowers! 🥹💐";
-
-  }, 3500);
+    void bouquet.offsetWidth;
 
 
-  /*
-    Final celebration.
-  */
+    /* Start bouquet */
 
-  setTimeout(() => {
+    setTimeout(function () {
 
-    animationText.classList.add("hidden");
+      animationText.textContent =
+        "Dudu is giving Bubu a bouquet... 💐";
 
-    finalMessage.classList.remove("hidden");
+      bouquet.classList.add("give");
 
-    createConfetti();
-
-  }, 4500);
-
-});
+    }, 1200);
 
 
-/* ==========================================
-   CONFETTI
-========================================== */
+    /* Bouquet reaches Bubu */
 
-function createConfetti() {
+    setTimeout(function () {
 
-  confetti.innerHTML = "";
+      animationText.textContent =
+        "Bubu got the flowers! 🥹💐";
 
-
-  const symbols = [
-    "💜",
-    "♥",
-    "♡",
-    "✦",
-    "✧",
-    "✨",
-    "🌸",
-    "💐"
-  ];
+    }, 3500);
 
 
-  for (let i = 0; i < 80; i++) {
+    /* Final celebration */
 
-    const piece =
-      document.createElement("span");
+    setTimeout(function () {
 
-    piece.className =
-      "confetti-piece";
+      animationText.classList.add("hidden");
 
+      finalMessage.classList.remove("hidden");
 
-    piece.textContent =
-      symbols[
-        Math.floor(
-          Math.random() *
-          symbols.length
-        )
-      ];
+      createConfetti();
+
+    }, 4500);
+
+  });
 
 
-    piece.style.left =
-      Math.random() * 100 + "%";
+  /* ================================
+     CONFETTI
+  ================================= */
 
+  function createConfetti() {
 
-    piece.style.animationDuration =
-      (2.5 + Math.random() * 3) + "s";
-
-
-    piece.style.animationDelay =
-      Math.random() * 1.5 + "s";
-
-
-    piece.style.fontSize =
-      (12 + Math.random() * 15) + "px";
-
-
-    confetti.appendChild(piece);
-  }
-
-
-  /*
-    Clean everything after animation.
-  */
-
-  setTimeout(() => {
+    if (!confetti) return;
 
     confetti.innerHTML = "";
 
-  }, 7000);
-
-}
-
-
-/* ==========================================
-   REPLAY BUTTON
-========================================== */
-
-replayButton.addEventListener("click", () => {
-
-  /*
-    Hide celebration.
-  */
-
-  loveScreen.classList.add("hidden");
+    const symbols = [
+      "💜",
+      "♥",
+      "♡",
+      "✦",
+      "✧",
+      "✨",
+      "🌸",
+      "💐"
+    ];
 
 
-  /*
-    Show question again.
-  */
+    for (let i = 0; i < 80; i++) {
 
-  questionScreen.classList.remove("hidden");
+      const piece =
+        document.createElement("span");
+
+      piece.className =
+        "confetti-piece";
+
+      piece.textContent =
+        symbols[
+          Math.floor(
+            Math.random() *
+            symbols.length
+          )
+        ];
+
+      piece.style.left =
+        Math.random() * 100 + "%";
+
+      piece.style.animationDuration =
+        (2.5 + Math.random() * 3) + "s";
+
+      piece.style.animationDelay =
+        Math.random() * 1.5 + "s";
+
+      piece.style.fontSize =
+        (12 + Math.random() * 15) + "px";
+
+      confetti.appendChild(piece);
+    }
 
 
-  /*
-    Reset No button.
-  */
+    setTimeout(function () {
 
-  noCount = 0;
+      confetti.innerHTML = "";
 
-  noButton.textContent =
-    "No 🥺";
+    }, 7000);
 
-  noButton.style.transform =
-    "translate(0, 0)";
+  }
 
 
-  questionMessage.textContent =
-    "Choose wisely... 👀💜";
+  /* ================================
+     REPLAY
+  ================================= */
 
+  if (replayButton) {
 
-  /*
-    Reset bouquet animation.
-  */
+    replayButton.addEventListener(
+      "click",
+      function () {
 
-  bouquet.classList.remove("give");
+        loveScreen.classList.add("hidden");
 
+        questionScreen.classList.remove("hidden");
 
-  /*
-    Reset final screen.
-  */
+        noCount = 0;
 
-  finalMessage.classList.add("hidden");
+        noButton.textContent =
+          "No 🥺";
 
-  animationText.classList.remove("hidden");
+        noButton.style.transform =
+          "translate(0, 0)";
 
-  animationText.textContent =
-    "Dudu has something for Bubu... 🥺";
+        questionMessage.textContent =
+          "Choose wisely... 👀💜";
+
+        bouquet.classList.remove("give");
+
+        finalMessage.classList.add("hidden");
+
+        animationText.classList.remove("hidden");
+
+        animationText.textContent =
+          "Dudu has something for Bubu... 🥺";
+
+      }
+    );
+
+  }
 
 });
