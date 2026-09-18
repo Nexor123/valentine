@@ -236,7 +236,239 @@
 
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const yesButton = document.getElementById("yesButton");
+  const noButton = document.getElementById("noButton");
+
+  const questionScreen =
+    document.getElementById("questionScreen");
+
+  const loveScreen =
+    document.getElementById("loveScreen");
+
+  const questionMessage =
+    document.getElementById("questionMessage");
+
+  const bouquet =
+    document.getElementById("bouquet");
+
+  const animationText =
+    document.getElementById("animationText");
+
+  const finalMessage =
+    document.getElementById("finalMessage");
+
+  const replayButton =
+    document.getElementById("replayButton");
+
+  const confetti =
+    document.getElementById("confetti");
+
+
+  /* =========================
+     NO BUTTON
+  ========================= */
+
+  const messages = [
+    "No 🥺",
+    "Are you sure? 🥺",
+    "Please think about it... 💜",
+    "Really? 😭",
+    "Are you absolutely sure? 🥹",
+    "Dudu is getting sad... 💔",
+    "One more chance? 🌸",
+    "Think again, please? 🥺",
+    "Don't break Dudu's heart 😭",
+    "Pretty please? 💜",
+    "Last chance? 🥹",
+    "Please say yes... 💐"
+  ];
+
+  let noCount = 0;
+
+
+  noButton.addEventListener("click", function () {
+
+    noCount++;
+
+    const index =
+      Math.min(noCount, messages.length - 1);
+
+    noButton.textContent =
+      messages[index];
+
+    questionMessage.textContent =
+      messages[index];
+
+    const x =
+      Math.random() * 60 - 30;
+
+    const y =
+      Math.random() * 40 - 20;
+
+    noButton.style.transform =
+      "translate(" + x + "px, " + y + "px)";
+  });
+
+
+  /* =========================
+     YES BUTTON
+  ========================= */
+
+  yesButton.addEventListener("click", function () {
+
+    questionScreen.classList.add("hidden");
+
+    loveScreen.classList.remove("hidden");
+
+    bouquet.classList.remove("give");
+
+    finalMessage.classList.add("hidden");
+
+    animationText.classList.remove("hidden");
+
+    animationText.textContent =
+      "Dudu has something for Bubu... 🥺";
+
+    /*
+      Restart animation.
+    */
+    void bouquet.offsetWidth;
+
+
+    /*
+      Start bouquet movement.
+    */
+    setTimeout(function () {
+
+      animationText.textContent =
+        "Dudu is giving Bubu a bouquet... 💐";
+
+      bouquet.classList.add("give");
+
+    }, 1200);
+
+
+    /*
+      Bouquet reaches Bubu.
+    */
+    setTimeout(function () {
+
+      animationText.textContent =
+        "Bubu got the flowers! 🥹💐";
+
+    }, 3500);
+
+
+    /*
+      Celebration.
+    */
+    setTimeout(function () {
+
+      animationText.classList.add("hidden");
+
+      finalMessage.classList.remove("hidden");
+
+      createConfetti();
+
+    }, 4500);
+
+  });
+
+
+  /* =========================
+     CONFETTI
+  ========================= */
+
+  function createConfetti() {
+
+    confetti.innerHTML = "";
+
+    const symbols = [
+      "💜",
+      "♥",
+      "♡",
+      "✦",
+      "✧",
+      "✨",
+      "🌸",
+      "💐"
+    ];
+
+    for (let i = 0; i < 80; i++) {
+
+      const piece =
+        document.createElement("span");
+
+      piece.className =
+        "confetti-piece";
+
+      piece.textContent =
+        symbols[
+          Math.floor(
+            Math.random() * symbols.length
+          )
+        ];
+
+      piece.style.left =
+        Math.random() * 100 + "%";
+
+      piece.style.animationDuration =
+        (2.5 + Math.random() * 3) + "s";
+
+      piece.style.animationDelay =
+        Math.random() * 1.5 + "s";
+
+      piece.style.fontSize =
+        (12 + Math.random() * 15) + "px";
+
+      confetti.appendChild(piece);
+    }
+
+    setTimeout(function () {
+
+      confetti.innerHTML = "";
+
+    }, 7000);
+  }
+
+
+  /* =========================
+     REPLAY
+  ========================= */
+
+  replayButton.addEventListener("click", function () {
+
+    loveScreen.classList.add("hidden");
+
+    questionScreen.classList.remove("hidden");
+
+    noCount = 0;
+
+    noButton.textContent = "No 🥺";
+
+    noButton.style.transform =
+      "translate(0, 0)";
+
+    questionMessage.textContent =
+      "Choose wisely... 👀💜";
+
+    bouquet.classList.remove("give");
+
+    finalMessage.classList.add("hidden");
+
+    animationText.classList.remove("hidden");
+
+    animationText.textContent =
+      "Dudu has something for Bubu... 🥺";
+
+  });
+
+});
+</script>
+  
 
 </body>
 
