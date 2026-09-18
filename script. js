@@ -1,8 +1,5 @@
-const yesButton =
-  document.getElementById("yesButton");
-
-const noButton =
-  document.getElementById("noButton");
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
 
 const questionScreen =
   document.getElementById("questionScreen");
@@ -29,78 +26,75 @@ const confetti =
   document.getElementById("confetti");
 
 
-/* =====================================
-   NO BUTTON
-===================================== */
+/* ==========================================
+   NO BUTTON MESSAGES
+========================================== */
 
 const noMessages = [
-
   "No 🥺",
-
   "Are you sure? 🥺",
-
   "Please think about it... 💜",
-
   "Really? 😭",
-
   "Are you absolutely sure? 🥹",
-
   "Dudu is getting sad... 💔",
-
   "One more chance? 🌸",
-
   "Think again, please? 🥺",
-
   "Don't break Dudu's heart 😭",
-
-  "Pretty please? 💜"
-
+  "Pretty please? 💜",
+  "Last chance? 🥹",
+  "Please say yes... 💐"
 ];
 
 let noCount = 0;
 
 
+/* ==========================================
+   NO BUTTON CLICK
+========================================== */
+
 noButton.addEventListener("click", () => {
 
   noCount++;
 
-  const index =
+  const messageIndex =
     Math.min(
       noCount,
       noMessages.length - 1
     );
 
   noButton.textContent =
-    noMessages[index];
+    noMessages[messageIndex];
 
   questionMessage.textContent =
-    noMessages[index];
-
-  /*
-    Playful movement
-  */
+    noMessages[messageIndex];
 
   moveNoButton();
 
 });
 
 
-/* =====================================
-   MOVE NO BUTTON
-===================================== */
+/* ==========================================
+   PLAYFUL NO BUTTON MOVEMENT
+========================================== */
 
 function moveNoButton() {
 
   const isMobile =
     window.innerWidth <= 600;
 
+
+  /*
+    On phones we only move the button
+    a little so it stays easy to tap.
+  */
+
   if (isMobile) {
 
     const x =
-      Math.random() * 90 - 45;
+      Math.random() * 70 - 35;
 
     const y =
-      Math.random() * 60 - 30;
+      Math.random() * 50 - 25;
 
     noButton.style.transform =
       `translate(${x}px, ${y}px)`;
@@ -108,37 +102,44 @@ function moveNoButton() {
     return;
   }
 
+
+  /*
+    Desktop movement.
+  */
+
   const x =
-    Math.random() * 90 - 45;
+    Math.random() * 100 - 50;
 
   const y =
-    Math.random() * 50 - 25;
+    Math.random() * 60 - 30;
 
   noButton.style.transform =
     `translate(${x}px, ${y}px)`;
 }
 
 
-/* =====================================
+/* ==========================================
    YES BUTTON
-===================================== */
+========================================== */
 
 yesButton.addEventListener("click", () => {
 
   /*
-    Hide question.
+    Hide the question.
   */
 
   questionScreen.classList.add("hidden");
 
+
   /*
-    Show animation.
+    Show the animation screen.
   */
 
   loveScreen.classList.remove("hidden");
 
+
   /*
-    Reset animation elements.
+    Reset animation.
   */
 
   bouquet.classList.remove("give");
@@ -147,12 +148,21 @@ yesButton.addEventListener("click", () => {
 
   animationText.classList.remove("hidden");
 
+
   animationText.textContent =
     "Dudu has something for Bubu... 🥺";
 
 
   /*
-    Small delay before bouquet moves.
+    Force browser to recognize a fresh animation.
+  */
+
+  void bouquet.offsetWidth;
+
+
+  /*
+    Start bouquet animation after
+    a short dramatic pause.
   */
 
   setTimeout(() => {
@@ -162,7 +172,7 @@ yesButton.addEventListener("click", () => {
 
     bouquet.classList.add("give");
 
-  }, 1000);
+  }, 1200);
 
 
   /*
@@ -174,7 +184,7 @@ yesButton.addEventListener("click", () => {
     animationText.textContent =
       "Bubu got the flowers! 🥹💐";
 
-  }, 3300);
+  }, 3500);
 
 
   /*
@@ -189,21 +199,21 @@ yesButton.addEventListener("click", () => {
 
     createConfetti();
 
-  }, 4300);
+  }, 4500);
 
 });
 
 
-/* =====================================
+/* ==========================================
    CONFETTI
-===================================== */
+========================================== */
 
 function createConfetti() {
 
   confetti.innerHTML = "";
 
-  const symbols = [
 
+  const symbols = [
     "💜",
     "♥",
     "♡",
@@ -212,8 +222,8 @@ function createConfetti() {
     "✨",
     "🌸",
     "💐"
-
   ];
+
 
   for (let i = 0; i < 80; i++) {
 
@@ -223,45 +233,72 @@ function createConfetti() {
     piece.className =
       "confetti-piece";
 
+
     piece.textContent =
       symbols[
         Math.floor(
-          Math.random() * symbols.length
+          Math.random() *
+          symbols.length
         )
       ];
+
 
     piece.style.left =
       Math.random() * 100 + "%";
 
+
     piece.style.animationDuration =
       (2.5 + Math.random() * 3) + "s";
+
 
     piece.style.animationDelay =
       Math.random() * 1.5 + "s";
 
+
     piece.style.fontSize =
       (12 + Math.random() * 15) + "px";
 
+
     confetti.appendChild(piece);
   }
+
+
+  /*
+    Clean everything after animation.
+  */
 
   setTimeout(() => {
 
     confetti.innerHTML = "";
 
   }, 7000);
+
 }
 
 
-/* =====================================
-   REPLAY
-===================================== */
+/* ==========================================
+   REPLAY BUTTON
+========================================== */
 
 replayButton.addEventListener("click", () => {
 
+  /*
+    Hide celebration.
+  */
+
   loveScreen.classList.add("hidden");
 
+
+  /*
+    Show question again.
+  */
+
   questionScreen.classList.remove("hidden");
+
+
+  /*
+    Reset No button.
+  */
 
   noCount = 0;
 
@@ -271,10 +308,21 @@ replayButton.addEventListener("click", () => {
   noButton.style.transform =
     "translate(0, 0)";
 
+
   questionMessage.textContent =
     "Choose wisely... 👀💜";
 
+
+  /*
+    Reset bouquet animation.
+  */
+
   bouquet.classList.remove("give");
+
+
+  /*
+    Reset final screen.
+  */
 
   finalMessage.classList.add("hidden");
 
