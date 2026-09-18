@@ -11,6 +11,11 @@
 
   <meta name="theme-color" content="#c7a7ed">
 
+  <meta
+    name="description"
+    content="A little Valentine question 💜"
+  >
+
   <title>Will You Be My Valentine? 💜</title>
 
   <link rel="stylesheet" href="style.css">
@@ -25,8 +30,9 @@
     <div class="orb orb3"></div>
   </div>
 
+
   <!-- Floating hearts -->
-  <div class="floating-hearts">
+  <div class="floating-hearts" aria-hidden="true">
     <span>♡</span>
     <span>♥</span>
     <span>♡</span>
@@ -39,32 +45,35 @@
   </div>
 
 
-  <!-- =================================
+  <!-- =====================================
        QUESTION SCREEN
-  ================================== -->
+  ====================================== -->
 
   <main id="questionScreen" class="screen">
 
     <div class="card">
 
+      <!-- Decorative sparkles -->
       <div class="sparkle s1">✦</div>
       <div class="sparkle s2">✧</div>
       <div class="sparkle s3">✦</div>
 
-      <!-- Dudu -->
+
+      <!-- DUDU -->
       <div class="single-character">
 
         <div class="character-glow"></div>
 
         <img
-          src="dudu.jpg"
-          alt="Dudu holding flowers"
+          src="dudu.jpeg"
+          alt="Dudu holding a flower bouquet"
           class="dudu-main"
         >
 
       </div>
 
 
+      <!-- Question -->
       <p class="eyebrow">
         I have something to ask you...
       </p>
@@ -75,16 +84,21 @@
         <b>♥</b>
       </h1>
 
-      <p id="questionMessage" class="message">
+      <p
+        id="questionMessage"
+        class="message"
+      >
         Choose wisely... 👀💜
       </p>
 
 
+      <!-- Buttons -->
       <div class="buttons">
 
         <button
           id="yesButton"
           class="yes-button"
+          type="button"
         >
           Yes! 💜
         </button>
@@ -92,11 +106,13 @@
         <button
           id="noButton"
           class="no-button"
+          type="button"
         >
           No 🥺
         </button>
 
       </div>
+
 
       <p class="footer-text">
         made with a little courage & lots of love ♡
@@ -107,9 +123,9 @@
   </main>
 
 
-  <!-- =================================
-       LOVE ANIMATION SCREEN
-  ================================== -->
+  <!-- =====================================
+       LOVE / BOUQUET ANIMATION SCREEN
+  ====================================== -->
 
   <main
     id="loveScreen"
@@ -118,13 +134,16 @@
 
     <div class="love-card">
 
+
+      <!-- Animation scene -->
       <div class="scene">
+
 
         <!-- DUDU -->
         <div class="person dudu">
 
           <img
-            src="dudu.jpg"
+            src="dudu.jpeg"
             alt="Dudu"
           >
 
@@ -139,7 +158,7 @@
         <div class="person bubu">
 
           <img
-            src="bubu.png"
+            src="bubu.jpeg"
             alt="Bubu"
           >
 
@@ -154,6 +173,7 @@
         <div
           id="bouquet"
           class="bouquet"
+          aria-hidden="true"
         >
           💐
         </div>
@@ -161,6 +181,7 @@
       </div>
 
 
+      <!-- Animation text -->
       <div
         id="animationText"
         class="animation-text"
@@ -168,6 +189,8 @@
         Dudu has something for Bubu... 🥺
       </div>
 
+
+      <!-- Final message -->
       <div
         id="finalMessage"
         class="final-message hidden"
@@ -186,12 +209,13 @@
         </p>
 
         <span>
-          Dudu & Bubu forever ♡
+          Dudu &amp; Bubu forever ♡
         </span>
 
         <button
           id="replayButton"
           class="replay-button"
+          type="button"
         >
           ↻ Replay
         </button>
@@ -207,9 +231,11 @@
   <div
     id="confetti"
     class="confetti"
+    aria-hidden="true"
   ></div>
 
 
+  <!-- JavaScript -->
   <script src="script.js"></script>
 
 </body>
