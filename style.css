@@ -53,35 +53,29 @@ body {
 }
 
 
-/* ================================
+/* =================================
    BACKGROUND
-================================ */
+================================= */
 
 .background {
   position: fixed;
   inset: 0;
-
   overflow: hidden;
-
   pointer-events: none;
+  z-index: 0;
 }
 
 .orb {
   position: absolute;
-
   border-radius: 50%;
-
   filter: blur(65px);
-
-  opacity: .35;
+  opacity: 0.35;
 }
 
 .orb1 {
   width: 300px;
   height: 300px;
-
   background: #c7a4ed;
-
   top: -100px;
   left: -100px;
 }
@@ -89,9 +83,7 @@ body {
 .orb2 {
   width: 330px;
   height: 330px;
-
   background: #e5afd1;
-
   right: -120px;
   top: 25%;
 }
@@ -99,37 +91,29 @@ body {
 .orb3 {
   width: 280px;
   height: 280px;
-
   background: #b89be7;
-
   bottom: -120px;
   left: 30%;
 }
 
 
-/* ================================
+/* =================================
    FLOATING HEARTS
-================================ */
+================================= */
 
 .floating-hearts {
   position: fixed;
-
   inset: 0;
-
   pointer-events: none;
-
   overflow: hidden;
-
   z-index: 1;
 }
 
 .floating-hearts span {
   position: absolute;
-
   bottom: -50px;
 
-  color: rgba(108, 76, 157, .18);
-
+  color: rgba(108, 76, 157, 0.18);
   font-size: 25px;
 
   animation:
@@ -186,32 +170,29 @@ body {
   0% {
     transform:
       translateY(0)
-      rotate(0);
-
+      rotate(0deg);
     opacity: 0;
   }
 
   15% {
-    opacity: .7;
+    opacity: 0.7;
   }
 
   100% {
     transform:
       translateY(-115vh)
       rotate(25deg);
-
     opacity: 0;
   }
 }
 
 
-/* ================================
-   SCREEN
-================================ */
+/* =================================
+   MAIN SCREEN
+================================= */
 
 .screen {
   position: relative;
-
   z-index: 5;
 
   min-height: 100vh;
@@ -220,37 +201,32 @@ body {
   width: 100%;
 
   display: flex;
-
   justify-content: center;
   align-items: center;
 
-  padding:
-    25px
-    16px;
+  padding: 25px 16px;
 }
 
 
-/* ================================
-   CARD
-================================ */
+/* =================================
+   GLASS CARD
+================================= */
 
 .card,
 .love-card {
-
   width: min(480px, 100%);
 
   padding: 35px 28px 28px;
 
   border-radius: 34px;
 
-  background:
-    rgba(255,255,255,.72);
+  background: rgba(255, 255, 255, 0.72);
 
   border:
-    1px solid rgba(255,255,255,.8);
+    1px solid rgba(255, 255, 255, 0.8);
 
   box-shadow:
-    0 30px 90px rgba(82,54,122,.22);
+    0 30px 90px rgba(82, 54, 122, 0.22);
 
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -259,8 +235,7 @@ body {
 
   position: relative;
 
-  animation:
-    cardAppear .8s ease;
+  animation: cardAppear 0.8s ease;
 }
 
 @keyframes cardAppear {
@@ -269,7 +244,7 @@ body {
     opacity: 0;
     transform:
       translateY(30px)
-      scale(.95);
+      scale(0.95);
   }
 
   to {
@@ -281,14 +256,12 @@ body {
 }
 
 
-/* ================================
+/* =================================
    SPARKLES
-================================ */
+================================= */
 
 .sparkle {
-
   position: absolute;
-
   color: #a37bd2;
 
   animation:
@@ -303,22 +276,21 @@ body {
 .s2 {
   right: 28px;
   top: 50px;
-
-  animation-delay: .6s;
+  animation-delay: 0.6s;
 }
 
 .s3 {
   left: 20px;
   top: 150px;
-
   animation-delay: 1s;
 }
 
 @keyframes sparkle {
 
-  0%,100% {
-    opacity: .3;
-    transform: scale(.8);
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
   }
 
   50% {
@@ -328,20 +300,17 @@ body {
 }
 
 
-/* ================================
-   MAIN DUDU
-================================ */
+/* =================================
+   DUDU
+================================= */
 
 .single-character {
-
   position: relative;
 
   width: 100%;
-
   height: 215px;
 
   display: flex;
-
   justify-content: center;
   align-items: center;
 
@@ -349,7 +318,6 @@ body {
 }
 
 .dudu-main {
-
   position: relative;
 
   width: 190px;
@@ -362,7 +330,7 @@ body {
   filter:
     drop-shadow(
       0 18px 20px
-      rgba(91,61,124,.16)
+      rgba(91, 61, 124, 0.16)
     );
 
   animation:
@@ -371,7 +339,8 @@ body {
 
 @keyframes characterFloat {
 
-  0%,100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
 
@@ -381,7 +350,6 @@ body {
 }
 
 .character-glow {
-
   position: absolute;
 
   width: 170px;
@@ -390,7 +358,7 @@ body {
   border-radius: 50%;
 
   background:
-    rgba(184,151,227,.3);
+    rgba(184, 151, 227, 0.3);
 
   filter: blur(30px);
 
@@ -400,8 +368,9 @@ body {
 
 @keyframes glow {
 
-  0%,100% {
-    transform: scale(.9);
+  0%,
+  100% {
+    transform: scale(0.9);
   }
 
   50% {
@@ -410,23 +379,21 @@ body {
 }
 
 
-/* ================================
+/* =================================
    TEXT
-================================ */
+================================= */
 
 .eyebrow {
-
   font-size: 13px;
 
   color: #88789b;
 
-  letter-spacing: .6px;
+  letter-spacing: 0.6px;
 
   margin-bottom: 10px;
 }
 
 h1 {
-
   font-size:
     clamp(31px, 8vw, 43px);
 
@@ -442,7 +409,6 @@ h1 span {
 }
 
 h1 b {
-
   color: #d887b4;
 
   display: inline-block;
@@ -453,7 +419,8 @@ h1 b {
 
 @keyframes heartbeat {
 
-  0%,100% {
+  0%,
+  100% {
     transform: scale(1);
   }
 
@@ -463,7 +430,6 @@ h1 b {
 }
 
 .message {
-
   margin-top: 13px;
 
   color: #8b7b9d;
@@ -472,20 +438,18 @@ h1 b {
 
   min-height: 21px;
 
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 
-/* ================================
+/* =================================
    BUTTONS
-================================ */
+================================= */
 
 .buttons {
-
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
   gap: 13px;
@@ -496,7 +460,6 @@ h1 b {
 }
 
 button {
-
   font: inherit;
 
   border: 0;
@@ -508,12 +471,11 @@ button {
   -webkit-tap-highlight-color: transparent;
 
   transition:
-    transform .2s ease,
-    box-shadow .2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .yes-button {
-
   min-width: 145px;
 
   padding: 15px 25px;
@@ -533,27 +495,24 @@ button {
 
   box-shadow:
     0 12px 25px
-    rgba(114,80,168,.3);
+    rgba(114, 80, 168, 0.3);
 }
 
 .yes-button:hover {
-
   transform:
     translateY(-3px)
     scale(1.03);
 
   box-shadow:
     0 18px 32px
-    rgba(114,80,168,.4);
+    rgba(114, 80, 168, 0.4);
 }
 
 .yes-button:active {
-
-  transform: scale(.95);
+  transform: scale(0.95);
 }
 
 .no-button {
-
   min-width: 110px;
 
   padding: 14px 20px;
@@ -561,7 +520,7 @@ button {
   border-radius: 999px;
 
   background:
-    rgba(255,255,255,.85);
+    rgba(255, 255, 255, 0.85);
 
   color: #75598e;
 
@@ -569,37 +528,34 @@ button {
 
   box-shadow:
     0 8px 20px
-    rgba(90,65,120,.12);
+    rgba(90, 65, 120, 0.12);
 }
 
 .no-button:active {
-
-  transform: scale(.94);
+  transform: scale(0.94);
 }
 
 
-/* ================================
+/* =================================
    FOOTER
-================================ */
+================================= */
 
 .footer-text {
-
   color: #aaa0b5;
 
   font-size: 10px;
 
   margin-top: 5px;
 
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }
 
 
-/* ================================
-   ANIMATION SCREEN
-================================ */
+/* =================================
+   LOVE SCREEN
+================================= */
 
 .animation-screen {
-
   display: flex;
 }
 
@@ -621,12 +577,11 @@ button {
 }
 
 
-/* ================================
-   SCENE
-================================ */
+/* =================================
+   DUDU + BUBU SCENE
+================================= */
 
 .scene {
-
   position: relative;
 
   width: 100%;
@@ -649,13 +604,13 @@ button {
   text-align: center;
 
   transition:
-    transform 1s cubic-bezier(.2,.8,.2,1);
+    transform 1s
+    cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .person img {
 
   width: 240px;
-
   height: 300px;
 
   object-fit: contain;
@@ -663,12 +618,11 @@ button {
   filter:
     drop-shadow(
       0 20px 20px
-      rgba(80,54,110,.18)
+      rgba(80, 54, 110, 0.18)
     );
 }
 
 .dudu {
-
   left: 0;
 
   transform:
@@ -676,7 +630,6 @@ button {
 }
 
 .bubu {
-
   right: 0;
 
   transform:
@@ -692,7 +645,7 @@ button {
   border-radius: 999px;
 
   background:
-    rgba(255,255,255,.8);
+    rgba(255, 255, 255, 0.8);
 
   color: #7556a0;
 
@@ -702,13 +655,13 @@ button {
 
   box-shadow:
     0 6px 15px
-    rgba(90,65,120,.1);
+    rgba(90, 65, 120, 0.1);
 }
 
 
-/* ================================
+/* =================================
    BOUQUET
-================================ */
+================================= */
 
 .bouquet {
 
@@ -725,7 +678,7 @@ button {
   filter:
     drop-shadow(
       0 10px 10px
-      rgba(80,50,100,.15)
+      rgba(80, 50, 100, 0.15)
     );
 
   animation:
@@ -734,7 +687,8 @@ button {
 
 @keyframes bouquetWait {
 
-  0%,100% {
+  0%,
+  100% {
     transform:
       translateY(0)
       rotate(-4deg);
@@ -748,16 +702,15 @@ button {
 }
 
 
-/*
-   Bouquet travels from Dudu
-   toward Bubu.
-*/
+/* =================================
+   BOUQUET GIVING ANIMATION
+================================= */
 
 .bouquet.give {
 
   animation:
     giveBouquet 2.4s
-    cubic-bezier(.2,.8,.2,1)
+    cubic-bezier(0.2, 0.8, 0.2, 1)
     forwards;
 }
 
@@ -799,15 +752,15 @@ button {
     bottom: 110px;
 
     transform:
-      scale(.85)
+      scale(0.85)
       rotate(0);
   }
 }
 
 
-/* ================================
+/* =================================
    ANIMATION TEXT
-================================ */
+================================= */
 
 .animation-text {
 
@@ -827,19 +780,21 @@ button {
 
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform:
+      translateY(10px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform:
+      translateY(0);
   }
 }
 
 
-/* ================================
-   FINAL
-================================ */
+/* =================================
+   FINAL MESSAGE
+================================= */
 
 .final-message {
 
@@ -852,14 +807,18 @@ button {
 @keyframes finalAppear {
 
   from {
+
     opacity: 0;
+
     transform:
-      scale(.8)
+      scale(0.8)
       translateY(20px);
   }
 
   to {
+
     opacity: 1;
+
     transform:
       scale(1)
       translateY(0);
@@ -919,11 +878,11 @@ h2 {
   color: #72529c;
 
   background:
-    rgba(255,255,255,.65);
+    rgba(255, 255, 255, 0.65);
 
   border:
     1px solid
-    rgba(114,82,156,.2);
+    rgba(114, 82, 156, 0.2);
 }
 
 .replay-button:hover {
@@ -933,9 +892,9 @@ h2 {
 }
 
 
-/* ================================
+/* =================================
    CONFETTI
-================================ */
+================================= */
 
 .confetti {
 
@@ -968,7 +927,7 @@ h2 {
 
     transform:
       translateY(-20px)
-      rotate(0);
+      rotate(0deg);
 
     opacity: 1;
   }
@@ -984,18 +943,18 @@ h2 {
 }
 
 
-/* ================================
+/* =================================
    HIDDEN
-================================ */
+================================= */
 
 .hidden {
   display: none !important;
 }
 
 
-/* ================================
+/* =================================
    MOBILE
-================================ */
+================================= */
 
 @media (max-width: 600px) {
 
@@ -1142,7 +1101,7 @@ h2 {
       left: 66%;
       bottom: 135px;
 
-      transform: scale(.8);
+      transform: scale(0.8);
     }
   }
 
@@ -1155,9 +1114,9 @@ h2 {
 }
 
 
-/* ================================
-   VERY SMALL PHONES
-================================ */
+/* =================================
+   SMALL PHONES
+================================= */
 
 @media (max-width: 370px) {
 
@@ -1185,9 +1144,9 @@ h2 {
 }
 
 
-/* ================================
+/* =================================
    REDUCED MOTION
-================================ */
+================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1195,8 +1154,10 @@ h2 {
   *::before,
   *::after {
 
-    animation-duration: .01ms !important;
+    animation-duration:
+      0.01ms !important;
 
-    animation-iteration-count: 1 !important;
+    animation-iteration-count:
+      1 !important;
   }
 }
