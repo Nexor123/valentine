@@ -1,0 +1,235 @@
+/* =========================================
+   VALENTINE WEBSITE
+========================================= */
+
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+
+const questionScreen =
+  document.getElementById("questionScreen");
+
+const successScreen =
+  document.getElementById("successScreen");
+
+const replayButton =
+  document.getElementById("replayButton");
+
+const buttonArea =
+  document.getElementById("buttonArea");
+
+const confettiContainer =
+  document.getElementById("confettiContainer");
+
+
+/* =========================================
+   NO BUTTON MESSAGES
+========================================= */
+
+const noMessages = [
+  "No 🥺",
+  "Are you sure?",
+  "Really? 😭",
+  "Think again!",
+  "Please? 🥹",
+  "One more chance?",
+  "Pretty please? 💜",
+  "Don't do this 😭"
+];
+
+let noClickCount = 0;
+
+
+/* =========================================
+   YES BUTTON
+========================================= */
+
+yesButton.addEventListener("click", () => {
+
+  questionScreen.classList.add("hidden");
+
+  successScreen.classList.remove("hidden");
+
+  createConfetti();
+
+});
+
+
+/* =========================================
+   NO BUTTON
+========================================= */
+
+noButton.addEventListener("click", () => {
+
+  noClickCount++;
+
+  const messageIndex =
+    Math.min(
+      noClickCount,
+      noMessages.length - 1
+    );
+
+  noButton.textContent =
+    noMessages[messageIndex];
+
+  moveNoButton();
+
+});
+
+
+/* =========================================
+   MOVE NO BUTTON
+========================================= */
+
+function moveNoButton() {
+
+  /*
+    On smaller screens the button moves only
+    slightly so it remains easy to tap.
+  */
+
+  const isMobile =
+    window.innerWidth <= 520;
+
+  if (isMobile) {
+
+    const x =
+      (Math.random() * 90) - 45;
+
+    const y =
+      (Math.random() * 60) - 30;
+
+    noButton.style.transform =
+      `translate(${x}px, ${y}px)`;
+
+    return;
+  }
+
+
+  /*
+    Desktop:
+    Move inside the button area.
+  */
+
+  const areaRect =
+    buttonArea.getBoundingClientRect();
+
+  const buttonRect =
+    noButton.getBoundingClientRect();
+
+  const maxX =
+    Math.max(
+      0,
+      (areaRect.width - buttonRect.width) / 2 - 8
+    );
+
+  const maxY =
+    Math.max(
+      0,
+      (areaRect.height - buttonRect.height) / 2 - 8
+    );
+
+  const x =
+    (Math.random() * maxX * 2) - maxX;
+
+  const y =
+    (Math.random() * maxY * 2) - maxY;
+
+  noButton.style.transform =
+    `translate(${x}px, ${y}px)`;
+}
+
+
+/* =========================================
+   REPLAY
+========================================= */
+
+replayButton.addEventListener("click", () => {
+
+  successScreen.classList.add("hidden");
+
+  questionScreen.classList.remove("hidden");
+
+  noClickCount = 0;
+
+  noButton.textContent = "No 🥺";
+
+  noButton.style.transform = "translate(0, 0)";
+
+});
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+function createConfetti() {
+
+  confettiContainer.innerHTML = "";
+
+  const symbols = [
+    "♥",
+    "♡",
+    "✦",
+    "✧",
+    "💜",
+    "✨"
+  ];
+
+  const total = 65;
+
+  for (let i = 0; i < total; i++) {
+
+    const piece =
+      document.createElement("span");
+
+    piece.classList.add("confetti");
+
+    piece.textContent =
+      symbols[
+        Math.floor(
+          Math.random() * symbols.length
+        )
+      ];
+
+    piece.style.left =
+      Math.random() * 100 + "%";
+
+    piece.style.animationDuration =
+      (2.5 + Math.random() * 3) + "s";
+
+    piece.style.animationDelay =
+      Math.random() * 1.5 + "s";
+
+    piece.style.fontSize =
+      (12 + Math.random() * 14) + "px";
+
+    confettiContainer.appendChild(piece);
+
+  }
+
+  /*
+    Remove confetti after animation.
+  */
+
+  setTimeout(() => {
+
+    confettiContainer.innerHTML = "";
+
+  }, 7000);
+
+}
+
+
+/* =========================================
+   PREVENT ACCIDENTAL DOUBLE TAP ZOOM
+========================================= */
+
+document.addEventListener(
+  "dblclick",
+  (event) => {
+    if (event.target.tagName === "BUTTON") {
+      event.preventDefault();
+    }
+  },
+  { passive: false }
+);
